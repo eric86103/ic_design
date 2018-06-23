@@ -1,0 +1,1603 @@
+Analysis & Synthesis report for DE2_115
+Sat Jun 23 23:03:47 2018
+Quartus II 64-Bit Version 15.0.0 Build 145 04/22/2015 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |DE2_115|Top:top|letter:m5|state
+  9. State Machine - |DE2_115|Top:top|controller:m1|current_state_r
+ 10. User-Specified and Inferred Latches
+ 11. Registers Removed During Synthesis
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Parameter Settings for User Entity Instance: Top:top|controller:m1
+ 16. Parameter Settings for User Entity Instance: Top:top|MODER:m2
+ 17. Parameter Settings for User Entity Instance: Top:top|letter:m5
+ 18. Parameter Settings for User Entity Instance: Top:top|Debounce:deb1
+ 19. Parameter Settings for User Entity Instance: Top:top|Debounce:deb2
+ 20. Parameter Settings for User Entity Instance: Top:top|Debounce:deb3
+ 21. Parameter Settings for User Entity Instance: Top:top|Debounce:deb4
+ 22. Parameter Settings for Inferred Entity Instance: Top:top|MODER:m2|lpm_divide:Mod2
+ 23. Parameter Settings for Inferred Entity Instance: Top:top|MODER:m2|lpm_divide:Mod0
+ 24. Parameter Settings for Inferred Entity Instance: Top:top|MODER:m2|lpm_divide:Mod1
+ 25. Post-Synthesis Netlist Statistics for Top Partition
+ 26. Elapsed Time Per Partition
+ 27. Analysis & Synthesis Messages
+ 28. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2015 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus II License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Sat Jun 23 23:03:47 2018       ;
+; Quartus II 64-Bit Version          ; 15.0.0 Build 145 04/22/2015 SJ Full Version ;
+; Revision Name                      ; DE2_115                                     ;
+; Top-level Entity Name              ; DE2_115                                     ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 11,438                                      ;
+;     Total combinational functions  ; 10,813                                      ;
+;     Dedicated logic registers      ; 1,757                                       ;
+; Total registers                    ; 1757                                        ;
+; Total pins                         ; 480                                         ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP4CE115F29C7      ;                    ;
+; Top-level entity name                                                      ; DE2_115            ; DE2_115            ;
+; Family name                                                                ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-4         ; < 0.1%      ;
+;     Processors 5-8         ;   0.0%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                           ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                       ; Library ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------+---------+
+; Top.v                            ; yes             ; User Verilog HDL File        ; C:/Users/team06/Desktop/eric/Top.v                                 ;         ;
+; DE2_115.sv                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/team06/Desktop/eric/DE2_115.sv                            ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/lpm_divide.tdf      ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/abs_divider.inc     ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/sign_div_unsign.inc ;         ;
+; aglobal150.inc                   ; yes             ; Megafunction                 ; c:/altera/15.0/quartus/libraries/megafunctions/aglobal150.inc      ;         ;
+; db/lpm_divide_m9m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/team06/Desktop/eric/db/lpm_divide_m9m.tdf                 ;         ;
+; db/sign_div_unsign_bkh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/team06/Desktop/eric/db/sign_div_unsign_bkh.tdf            ;         ;
+; db/alt_u_div_a4f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/team06/Desktop/eric/db/alt_u_div_a4f.tdf                  ;         ;
+; db/add_sub_7pc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/team06/Desktop/eric/db/add_sub_7pc.tdf                    ;         ;
+; db/add_sub_8pc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/team06/Desktop/eric/db/add_sub_8pc.tdf                    ;         ;
+; db/lpm_divide_n9m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/team06/Desktop/eric/db/lpm_divide_n9m.tdf                 ;         ;
+; db/sign_div_unsign_ckh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/team06/Desktop/eric/db/sign_div_unsign_ckh.tdf            ;         ;
+; db/alt_u_div_c4f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/team06/Desktop/eric/db/alt_u_div_c4f.tdf                  ;         ;
+; db/lpm_divide_o9m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/team06/Desktop/eric/db/lpm_divide_o9m.tdf                 ;         ;
+; db/sign_div_unsign_dkh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/team06/Desktop/eric/db/sign_div_unsign_dkh.tdf            ;         ;
+; db/alt_u_div_e4f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/team06/Desktop/eric/db/alt_u_div_e4f.tdf                  ;         ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------+---------+
+
+
++------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                ;
++---------------------------------------------+--------------+
+; Resource                                    ; Usage        ;
++---------------------------------------------+--------------+
+; Estimated Total logic elements              ; 11,438       ;
+;                                             ;              ;
+; Total combinational functions               ; 10813        ;
+; Logic element usage by number of LUT inputs ;              ;
+;     -- 4 input functions                    ; 8593         ;
+;     -- 3 input functions                    ; 1573         ;
+;     -- <=2 input functions                  ; 647          ;
+;                                             ;              ;
+; Logic elements by mode                      ;              ;
+;     -- normal mode                          ; 10610        ;
+;     -- arithmetic mode                      ; 203          ;
+;                                             ;              ;
+; Total registers                             ; 1757         ;
+;     -- Dedicated logic registers            ; 1757         ;
+;     -- I/O registers                        ; 0            ;
+;                                             ;              ;
+; I/O pins                                    ; 480          ;
+;                                             ;              ;
+; Embedded Multiplier 9-bit elements          ; 0            ;
+;                                             ;              ;
+; Maximum fan-out node                        ; SW[16]~input ;
+; Maximum fan-out                             ; 1757         ;
+; Total fan-out                               ; 47495        ;
+; Average fan-out                             ; 3.47         ;
++---------------------------------------------+--------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                 ;
++----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                   ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                       ; Library Name ;
++----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------+--------------+
+; |DE2_115                                     ; 10813 (0)         ; 1757 (0)     ; 0           ; 0            ; 0       ; 0         ; 480  ; 0            ; |DE2_115                                                                                                                  ; work         ;
+;    |Top:top|                                 ; 10813 (0)         ; 1757 (0)     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top                                                                                                          ; work         ;
+;       |Debounce:deb1|                        ; 7 (7)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top|Debounce:deb1                                                                                            ; work         ;
+;       |Debounce:deb2|                        ; 7 (7)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top|Debounce:deb2                                                                                            ; work         ;
+;       |Debounce:deb3|                        ; 7 (7)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top|Debounce:deb3                                                                                            ; work         ;
+;       |Debounce:deb4|                        ; 7 (7)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top|Debounce:deb4                                                                                            ; work         ;
+;       |MODER:m2|                             ; 7256 (7116)       ; 1044 (1044)  ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top|MODER:m2                                                                                                 ; work         ;
+;          |lpm_divide:Mod0|                   ; 41 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top|MODER:m2|lpm_divide:Mod0                                                                                 ; work         ;
+;             |lpm_divide_n9m:auto_generated|  ; 41 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top|MODER:m2|lpm_divide:Mod0|lpm_divide_n9m:auto_generated                                                   ; work         ;
+;                |sign_div_unsign_ckh:divider| ; 41 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top|MODER:m2|lpm_divide:Mod0|lpm_divide_n9m:auto_generated|sign_div_unsign_ckh:divider                       ; work         ;
+;                   |alt_u_div_c4f:divider|    ; 41 (41)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top|MODER:m2|lpm_divide:Mod0|lpm_divide_n9m:auto_generated|sign_div_unsign_ckh:divider|alt_u_div_c4f:divider ; work         ;
+;          |lpm_divide:Mod1|                   ; 46 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top|MODER:m2|lpm_divide:Mod1                                                                                 ; work         ;
+;             |lpm_divide_o9m:auto_generated|  ; 46 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top|MODER:m2|lpm_divide:Mod1|lpm_divide_o9m:auto_generated                                                   ; work         ;
+;                |sign_div_unsign_dkh:divider| ; 46 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top|MODER:m2|lpm_divide:Mod1|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider                       ; work         ;
+;                   |alt_u_div_e4f:divider|    ; 46 (46)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top|MODER:m2|lpm_divide:Mod1|lpm_divide_o9m:auto_generated|sign_div_unsign_dkh:divider|alt_u_div_e4f:divider ; work         ;
+;          |lpm_divide:Mod2|                   ; 53 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top|MODER:m2|lpm_divide:Mod2                                                                                 ; work         ;
+;             |lpm_divide_m9m:auto_generated|  ; 53 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top|MODER:m2|lpm_divide:Mod2|lpm_divide_m9m:auto_generated                                                   ; work         ;
+;                |sign_div_unsign_bkh:divider| ; 53 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top|MODER:m2|lpm_divide:Mod2|lpm_divide_m9m:auto_generated|sign_div_unsign_bkh:divider                       ; work         ;
+;                   |alt_u_div_a4f:divider|    ; 53 (53)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top|MODER:m2|lpm_divide:Mod2|lpm_divide_m9m:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_a4f:divider ; work         ;
+;       |clk_divider:m3|                       ; 47 (47)           ; 29 (29)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top|clk_divider:m3                                                                                           ; work         ;
+;       |controller:m1|                        ; 155 (155)         ; 136 (136)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top|controller:m1                                                                                            ; work         ;
+;       |ledcube:m0|                           ; 709 (709)         ; 22 (22)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top|ledcube:m0                                                                                               ; work         ;
+;       |letter:m5|                            ; 2616 (2616)       ; 497 (497)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top|letter:m5                                                                                                ; work         ;
+;       |lfsr:m4|                              ; 2 (2)             ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE2_115|Top:top|lfsr:m4                                                                                                  ; work         ;
++----------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------+
+; State Machine - |DE2_115|Top:top|letter:m5|state ;
++---------------+----------------------------------+
+; Name          ; state.print                      ;
++---------------+----------------------------------+
+; state.setting ; 0                                ;
+; state.print   ; 1                                ;
++---------------+----------------------------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------+
+; State Machine - |DE2_115|Top:top|controller:m1|current_state_r                                                       ;
++------------------------+----------------------+----------------------+------------------------+----------------------+
+; Name                   ; current_state_r.IDLE ; current_state_r.STOP ; current_state_r.RECORD ; current_state_r.MODE ;
++------------------------+----------------------+----------------------+------------------------+----------------------+
+; current_state_r.STOP   ; 0                    ; 0                    ; 0                      ; 0                    ;
+; current_state_r.MODE   ; 0                    ; 1                    ; 0                      ; 1                    ;
+; current_state_r.RECORD ; 0                    ; 1                    ; 1                      ; 0                    ;
+; current_state_r.IDLE   ; 1                    ; 1                    ; 0                      ; 0                    ;
++------------------------+----------------------+----------------------+------------------------+----------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                        ;
++----------------------------------------------------+------------------------------+------------------------+
+; Latch Name                                         ; Latch Enable Signal          ; Free of Timing Hazards ;
++----------------------------------------------------+------------------------------+------------------------+
+; Top:top|controller:m1|time_duration_w[0]           ; Top:top|controller:m1|Equal0 ; yes                    ;
+; Top:top|controller:m1|time_duration_w[6]           ; Top:top|controller:m1|Equal0 ; yes                    ;
+; Top:top|controller:m1|time_duration_w[5]           ; Top:top|controller:m1|Equal0 ; yes                    ;
+; Top:top|controller:m1|time_duration_w[4]           ; Top:top|controller:m1|Equal0 ; yes                    ;
+; Top:top|controller:m1|time_duration_w[3]           ; Top:top|controller:m1|Equal0 ; yes                    ;
+; Top:top|controller:m1|time_duration_w[2]           ; Top:top|controller:m1|Equal0 ; yes                    ;
+; Top:top|controller:m1|time_duration_w[1]           ; Top:top|controller:m1|Equal0 ; yes                    ;
+; Top:top|controller:m1|time_duration_w[7]           ; Top:top|controller:m1|Equal0 ; yes                    ;
+; Number of user-specified and inferred latches = 8  ;                              ;                        ;
++----------------------------------------------------+------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++-----------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                  ;
++--------------------------------------------------+--------------------------------------------------+
+; Register name                                    ; Reason for Removal                               ;
++--------------------------------------------------+--------------------------------------------------+
+; Top:top|controller:m1|duration_r[15][6]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[15][5]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[15][4]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[15][3]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[15][2]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[15][1]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[15][0]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[14][6]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[14][5]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[14][4]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[14][3]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[14][2]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[14][1]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[14][0]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[13][6]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[13][5]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[13][4]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[13][3]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[13][2]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[13][1]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[13][0]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[12][6]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[12][5]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[12][4]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[12][3]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[12][2]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[12][1]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[12][0]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[11][6]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[11][5]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[11][4]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[11][3]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[11][2]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[11][1]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[11][0]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[10][6]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[10][5]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[10][4]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[10][3]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[10][2]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[10][1]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[10][0]          ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[9][6]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[9][5]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[9][4]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[9][3]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[9][2]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[9][1]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[9][0]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[8][6]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[8][5]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[8][4]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[8][3]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[8][2]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[8][1]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[8][0]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[7][6]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[7][5]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[7][4]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[7][3]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[7][2]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[7][1]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[7][0]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[6][6]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[6][5]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[6][4]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[6][3]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[6][2]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[6][1]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[6][0]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[5][6]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[5][5]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[5][4]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[5][3]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[5][2]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[5][1]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[5][0]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[4][6]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[4][5]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[4][4]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[4][3]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[4][2]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[4][1]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[4][0]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[3][6]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[3][5]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[3][4]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[3][3]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[3][2]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[3][1]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[3][0]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[2][6]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[2][5]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[2][4]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[2][3]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[2][2]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[2][1]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[2][0]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[1][6]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[1][5]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[1][4]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[1][3]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[1][2]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[1][1]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[1][0]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[0][6]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[0][5]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[0][4]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[0][3]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[0][2]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[0][1]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|controller:m1|duration_r[0][0]           ; Stuck at GND due to stuck port data_in           ;
+; Top:top|letter:m5|buffer_r[504]                  ; Merged with Top:top|letter:m5|buffer_r[448]      ;
+; Top:top|letter:m5|buffer_r[320,376,384,440]      ; Merged with Top:top|letter:m5|buffer_r[312]      ;
+; Top:top|letter:m5|buffer_r[248]                  ; Merged with Top:top|letter:m5|buffer_r[192]      ;
+; Top:top|letter:m5|buffer_r[1..7,56..71,120..127] ; Merged with Top:top|letter:m5|buffer_r[0]        ;
+; Top:top|letter:m5|buffer_r[508]                  ; Merged with Top:top|letter:m5|buffer_r[452]      ;
+; Top:top|letter:m5|buffer_r[324,380,388,444]      ; Merged with Top:top|letter:m5|buffer_r[316]      ;
+; Top:top|letter:m5|buffer_r[252]                  ; Merged with Top:top|letter:m5|buffer_r[196]      ;
+; Top:top|letter:m5|buffer_r[505]                  ; Merged with Top:top|letter:m5|buffer_r[449]      ;
+; Top:top|letter:m5|buffer_r[321,377,385,441]      ; Merged with Top:top|letter:m5|buffer_r[313]      ;
+; Top:top|letter:m5|buffer_r[249]                  ; Merged with Top:top|letter:m5|buffer_r[193]      ;
+; Top:top|letter:m5|buffer_r[509]                  ; Merged with Top:top|letter:m5|buffer_r[453]      ;
+; Top:top|letter:m5|buffer_r[325,381,389,445]      ; Merged with Top:top|letter:m5|buffer_r[317]      ;
+; Top:top|letter:m5|buffer_r[253]                  ; Merged with Top:top|letter:m5|buffer_r[197]      ;
+; Top:top|letter:m5|buffer_r[506]                  ; Merged with Top:top|letter:m5|buffer_r[450]      ;
+; Top:top|letter:m5|buffer_r[322,378,386,442]      ; Merged with Top:top|letter:m5|buffer_r[314]      ;
+; Top:top|letter:m5|buffer_r[250]                  ; Merged with Top:top|letter:m5|buffer_r[194]      ;
+; Top:top|letter:m5|buffer_r[510]                  ; Merged with Top:top|letter:m5|buffer_r[454]      ;
+; Top:top|letter:m5|buffer_r[326,382,390,446]      ; Merged with Top:top|letter:m5|buffer_r[318]      ;
+; Top:top|letter:m5|buffer_r[254]                  ; Merged with Top:top|letter:m5|buffer_r[198]      ;
+; Top:top|letter:m5|buffer_r[507]                  ; Merged with Top:top|letter:m5|buffer_r[451]      ;
+; Top:top|letter:m5|buffer_r[323,379,387,443]      ; Merged with Top:top|letter:m5|buffer_r[315]      ;
+; Top:top|letter:m5|buffer_r[251]                  ; Merged with Top:top|letter:m5|buffer_r[195]      ;
+; Top:top|letter:m5|buffer_r[511]                  ; Merged with Top:top|letter:m5|buffer_r[455]      ;
+; Top:top|letter:m5|buffer_r[327,383,391,447]      ; Merged with Top:top|letter:m5|buffer_r[319]      ;
+; Top:top|letter:m5|buffer_r[255]                  ; Merged with Top:top|letter:m5|buffer_r[199]      ;
+; Top:top|letter:m5|buffer_r[0]                    ; Stuck at GND due to stuck port data_in           ;
+; Top:top|letter:m5|buffer_r[263]                  ; Merged with Top:top|letter:m5|buffer_r[319]      ;
+; Top:top|letter:m5|buffer_r[262]                  ; Merged with Top:top|letter:m5|buffer_r[318]      ;
+; Top:top|letter:m5|buffer_r[261]                  ; Merged with Top:top|letter:m5|buffer_r[317]      ;
+; Top:top|letter:m5|buffer_r[260]                  ; Merged with Top:top|letter:m5|buffer_r[316]      ;
+; Top:top|letter:m5|buffer_r[259]                  ; Merged with Top:top|letter:m5|buffer_r[315]      ;
+; Top:top|letter:m5|buffer_r[258]                  ; Merged with Top:top|letter:m5|buffer_r[314]      ;
+; Top:top|letter:m5|buffer_r[257]                  ; Merged with Top:top|letter:m5|buffer_r[313]      ;
+; Top:top|letter:m5|buffer_r[256]                  ; Merged with Top:top|letter:m5|buffer_r[312]      ;
+; Top:top|letter:m5|buffer_r[135]                  ; Merged with Top:top|letter:m5|buffer_r[191]      ;
+; Top:top|letter:m5|buffer_r[134]                  ; Merged with Top:top|letter:m5|buffer_r[190]      ;
+; Top:top|letter:m5|buffer_r[133]                  ; Merged with Top:top|letter:m5|buffer_r[189]      ;
+; Top:top|letter:m5|buffer_r[132]                  ; Merged with Top:top|letter:m5|buffer_r[188]      ;
+; Top:top|letter:m5|buffer_r[131]                  ; Merged with Top:top|letter:m5|buffer_r[187]      ;
+; Top:top|letter:m5|buffer_r[130]                  ; Merged with Top:top|letter:m5|buffer_r[186]      ;
+; Top:top|letter:m5|buffer_r[129]                  ; Merged with Top:top|letter:m5|buffer_r[185]      ;
+; Top:top|letter:m5|buffer_r[128]                  ; Merged with Top:top|letter:m5|buffer_r[184]      ;
+; Top:top|MODER:m2|test_counter_r[0]               ; Merged with Top:top|MODER:m2|global_counter_r[0] ;
+; Top:top|MODER:m2|test_counter_r[1]               ; Merged with Top:top|MODER:m2|global_counter_r[1] ;
+; Top:top|letter:m5|buffer_r[191]                  ; Merged with Top:top|letter:m5|buffer_r[455]      ;
+; Top:top|letter:m5|buffer_r[190]                  ; Merged with Top:top|letter:m5|buffer_r[454]      ;
+; Top:top|letter:m5|buffer_r[189]                  ; Merged with Top:top|letter:m5|buffer_r[453]      ;
+; Top:top|letter:m5|buffer_r[188]                  ; Merged with Top:top|letter:m5|buffer_r[452]      ;
+; Top:top|letter:m5|buffer_r[187]                  ; Merged with Top:top|letter:m5|buffer_r[451]      ;
+; Top:top|letter:m5|buffer_r[186]                  ; Merged with Top:top|letter:m5|buffer_r[450]      ;
+; Top:top|letter:m5|buffer_r[185]                  ; Merged with Top:top|letter:m5|buffer_r[449]      ;
+; Top:top|letter:m5|buffer_r[184]                  ; Merged with Top:top|letter:m5|buffer_r[448]      ;
+; Top:top|letter:m5|buffer_r[199]                  ; Merged with Top:top|letter:m5|buffer_r[319]      ;
+; Top:top|letter:m5|buffer_r[198]                  ; Merged with Top:top|letter:m5|buffer_r[318]      ;
+; Top:top|letter:m5|buffer_r[197]                  ; Merged with Top:top|letter:m5|buffer_r[317]      ;
+; Top:top|letter:m5|buffer_r[196]                  ; Merged with Top:top|letter:m5|buffer_r[316]      ;
+; Top:top|letter:m5|buffer_r[195]                  ; Merged with Top:top|letter:m5|buffer_r[315]      ;
+; Top:top|letter:m5|buffer_r[194]                  ; Merged with Top:top|letter:m5|buffer_r[314]      ;
+; Top:top|letter:m5|buffer_r[193]                  ; Merged with Top:top|letter:m5|buffer_r[313]      ;
+; Top:top|letter:m5|buffer_r[192]                  ; Merged with Top:top|letter:m5|buffer_r[312]      ;
+; Top:top|letter:m5|buffer_r[47]                   ; Merged with Top:top|letter:m5|buffer_r[119]      ;
+; Top:top|letter:m5|buffer_r[46]                   ; Merged with Top:top|letter:m5|buffer_r[118]      ;
+; Top:top|letter:m5|buffer_r[45]                   ; Merged with Top:top|letter:m5|buffer_r[117]      ;
+; Top:top|letter:m5|buffer_r[44]                   ; Merged with Top:top|letter:m5|buffer_r[116]      ;
+; Top:top|letter:m5|buffer_r[43]                   ; Merged with Top:top|letter:m5|buffer_r[115]      ;
+; Top:top|letter:m5|buffer_r[42]                   ; Merged with Top:top|letter:m5|buffer_r[114]      ;
+; Top:top|letter:m5|buffer_r[41]                   ; Merged with Top:top|letter:m5|buffer_r[113]      ;
+; Top:top|letter:m5|buffer_r[40]                   ; Merged with Top:top|letter:m5|buffer_r[112]      ;
+; Top:top|letter:m5|buffer_r[31]                   ; Merged with Top:top|letter:m5|buffer_r[39]       ;
+; Top:top|letter:m5|buffer_r[30]                   ; Merged with Top:top|letter:m5|buffer_r[38]       ;
+; Top:top|letter:m5|buffer_r[29]                   ; Merged with Top:top|letter:m5|buffer_r[37]       ;
+; Top:top|letter:m5|buffer_r[28]                   ; Merged with Top:top|letter:m5|buffer_r[36]       ;
+; Top:top|letter:m5|buffer_r[27]                   ; Merged with Top:top|letter:m5|buffer_r[35]       ;
+; Top:top|letter:m5|buffer_r[26]                   ; Merged with Top:top|letter:m5|buffer_r[34]       ;
+; Top:top|letter:m5|buffer_r[25]                   ; Merged with Top:top|letter:m5|buffer_r[33]       ;
+; Top:top|letter:m5|buffer_r[24]                   ; Merged with Top:top|letter:m5|buffer_r[32]       ;
+; Top:top|letter:m5|state~4                        ; Lost fanout                                      ;
+; Top:top|controller:m1|current_state_r.IDLE       ; Stuck at GND due to stuck port data_in           ;
+; Top:top|MODER:m2|test_counter_r[2]               ; Merged with Top:top|MODER:m2|global_counter_r[2] ;
+; Top:top|MODER:m2|test_counter_r[3]               ; Merged with Top:top|MODER:m2|global_counter_r[3] ;
+; Top:top|MODER:m2|test_counter_r[4]               ; Merged with Top:top|MODER:m2|global_counter_r[4] ;
+; Top:top|MODER:m2|test_counter_r[5]               ; Merged with Top:top|MODER:m2|global_counter_r[5] ;
+; Top:top|MODER:m2|test_counter_r[6]               ; Merged with Top:top|MODER:m2|global_counter_r[6] ;
+; Total Number of Removed Registers = 249          ;                                                  ;
++--------------------------------------------------+--------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 1757  ;
+; Number of registers using Synchronous Clear  ; 13    ;
+; Number of registers using Synchronous Load   ; 6     ;
+; Number of registers using Asynchronous Clear ; 1737  ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 1258  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; Top:top|controller:m1|speed_r[1]       ; 10      ;
+; Top:top|lfsr:m4|r_LFSR[0]              ; 77      ;
+; Top:top|controller:m1|stop_r           ; 1       ;
+; Top:top|letter:m5|counter3[2]          ; 394     ;
+; Top:top|letter:m5|counter3[0]          ; 394     ;
+; Top:top|letter:m5|counter3[1]          ; 390     ;
+; Total number of inverted registers = 6 ;         ;
++----------------------------------------+---------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|sentence[0][0]        ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|Debounce:deb2|counter_r[2]      ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|Debounce:deb1|counter_r[2]      ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[182]         ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[422]         ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[163]         ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |DE2_115|Top:top|controller:m1|play_counter_r[3] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |DE2_115|Top:top|MODER:m2|motion_counter_r[2]    ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|counter2[3]           ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|Debounce:deb4|counter_r[2]      ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|Debounce:deb3|counter_r[2]      ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|display[5]            ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[305]         ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[240]         ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[239]         ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[434]         ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[318]         ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[155]         ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[486]         ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[488]         ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[119]         ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[92]          ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[332]         ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[342]         ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[138]         ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[396]         ;
+; 5:1                ; 24 bits   ; 72 LEs        ; 72 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[168]         ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |DE2_115|Top:top|MODER:m2|cube_counter_r[3]      ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|counter[0]            ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 0 LEs                ; 6 LEs                  ; Yes        ; |DE2_115|Top:top|controller:m1|speed_r[3]        ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |DE2_115|Top:top|controller:m1|record_pos_r[0]   ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[108]         ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[55]          ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 24 LEs               ; 8 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[496]         ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[351]         ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[277]         ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[101]         ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[280]         ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 24 LEs               ; 8 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[352]         ;
+; 7:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[87]          ;
+; 7:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[12]          ;
+; 7:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[216]         ;
+; 7:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[289]         ;
+; 7:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[201]         ;
+; 7:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[264]         ;
+; 7:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[149]         ;
+; 8:1                ; 8 bits    ; 40 LEs        ; 32 LEs               ; 8 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[37]          ;
+; 8:1                ; 8 bits    ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[227]         ;
+; 8:1                ; 8 bits    ; 40 LEs        ; 32 LEs               ; 8 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|buffer_r[209]         ;
+; 16:1               ; 6 bits    ; 60 LEs        ; 48 LEs               ; 12 LEs                 ; Yes        ; |DE2_115|Top:top|letter:m5|sentence[4][2]        ;
+; 17:1               ; 6 bits    ; 66 LEs        ; 48 LEs               ; 18 LEs                 ; Yes        ; |DE2_115|Top:top|letter:m5|sentence[3][2]        ;
+; 17:1               ; 6 bits    ; 66 LEs        ; 48 LEs               ; 18 LEs                 ; Yes        ; |DE2_115|Top:top|letter:m5|sentence[5][0]        ;
+; 17:1               ; 6 bits    ; 66 LEs        ; 48 LEs               ; 18 LEs                 ; Yes        ; |DE2_115|Top:top|letter:m5|sentence[6][3]        ;
+; 17:1               ; 6 bits    ; 66 LEs        ; 48 LEs               ; 18 LEs                 ; Yes        ; |DE2_115|Top:top|letter:m5|sentence[7][2]        ;
+; 17:1               ; 6 bits    ; 66 LEs        ; 48 LEs               ; 18 LEs                 ; Yes        ; |DE2_115|Top:top|letter:m5|sentence[8][2]        ;
+; 17:1               ; 6 bits    ; 66 LEs        ; 48 LEs               ; 18 LEs                 ; Yes        ; |DE2_115|Top:top|letter:m5|sentence[9][3]        ;
+; 17:1               ; 6 bits    ; 66 LEs        ; 48 LEs               ; 18 LEs                 ; Yes        ; |DE2_115|Top:top|letter:m5|sentence[10][1]       ;
+; 17:1               ; 6 bits    ; 66 LEs        ; 48 LEs               ; 18 LEs                 ; Yes        ; |DE2_115|Top:top|letter:m5|sentence[11][0]       ;
+; 17:1               ; 6 bits    ; 66 LEs        ; 48 LEs               ; 18 LEs                 ; Yes        ; |DE2_115|Top:top|letter:m5|sentence[12][2]       ;
+; 17:1               ; 6 bits    ; 66 LEs        ; 48 LEs               ; 18 LEs                 ; Yes        ; |DE2_115|Top:top|letter:m5|sentence[13][4]       ;
+; 17:1               ; 6 bits    ; 66 LEs        ; 48 LEs               ; 18 LEs                 ; Yes        ; |DE2_115|Top:top|letter:m5|sentence[14][5]       ;
+; 17:1               ; 6 bits    ; 66 LEs        ; 48 LEs               ; 18 LEs                 ; Yes        ; |DE2_115|Top:top|letter:m5|sentence[15][4]       ;
+; 18:1               ; 6 bits    ; 72 LEs        ; 54 LEs               ; 18 LEs                 ; Yes        ; |DE2_115|Top:top|letter:m5|sentence[2][4]        ;
+; 19:1               ; 6 bits    ; 72 LEs        ; 60 LEs               ; 12 LEs                 ; Yes        ; |DE2_115|Top:top|letter:m5|sentence[1][3]        ;
+; 128:1              ; 8 bits    ; 680 LEs       ; 600 LEs              ; 80 LEs                 ; Yes        ; |DE2_115|Top:top|ledcube:m0|port[0]              ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |DE2_115|Top:top|letter:m5|counter3[2]           ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top|MODER:m2|Mux7                   ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top|MODER:m2|Mux7                   ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top|MODER:m2|Mux7                   ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top|MODER:m2|Mux7                   ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top|MODER:m2|Mux7                   ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top|MODER:m2|Mux7                   ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top|MODER:m2|Mux7                   ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top|MODER:m2|Mux7                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |DE2_115|Top:top|MODER:m2|Mux7                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top|letter:m5|Mux20                 ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top|letter:m5|Mux21                 ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top|letter:m5|Mux21                 ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top|letter:m5|Mux18                 ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top|letter:m5|Mux20                 ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top|letter:m5|Mux223                ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top|letter:m5|Mux37                 ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top|MODER:m2|Mux7                   ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top|MODER:m2|Mux7                   ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top|MODER:m2|Mux7                   ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top|MODER:m2|Mux7                   ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top|MODER:m2|Mux7                   ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top|MODER:m2|Mux7                   ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top|MODER:m2|Mux7                   ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |DE2_115|Top:top|MODER:m2|Mux7                   ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |DE2_115|Top:top|MODER:m2|Mux7                   ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |DE2_115|Top:top|MODER:m2|Mux7                   ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |DE2_115|Top:top|MODER:m2|Mux7                   ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |DE2_115|Top:top|MODER:m2|Mux7                   ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |DE2_115|Top:top|MODER:m2|Mux7                   ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |DE2_115|Top:top|MODER:m2|Mux7                   ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |DE2_115|Top:top|MODER:m2|Mux7                   ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |DE2_115|Top:top|MODER:m2|Mux7                   ;
+; 16:1               ; 6 bits    ; 60 LEs        ; 60 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top|letter:m5|Mux2                  ;
+; 17:1               ; 6 bits    ; 66 LEs        ; 66 LEs               ; 0 LEs                  ; No         ; |DE2_115|Top:top|controller:m1|o_mode[4]         ;
+; 7:1                ; 4 bits    ; 16 LEs        ; 12 LEs               ; 4 LEs                  ; No         ; |DE2_115|Top:top|controller:m1|Selector2         ;
+; 18:1               ; 6 bits    ; 72 LEs        ; 66 LEs               ; 6 LEs                  ; No         ; |DE2_115|Top:top|letter:m5|sentence_w            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
+
+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top:top|controller:m1 ;
++----------------+--------+------------------------------------------+
+; Parameter Name ; Value  ; Type                                     ;
++----------------+--------+------------------------------------------+
+; IDLE           ; 000    ; Unsigned Binary                          ;
+; MODE           ; 001    ; Unsigned Binary                          ;
+; RECORD         ; 010    ; Unsigned Binary                          ;
+; STOP           ; 100    ; Unsigned Binary                          ;
+; CUSTOM         ; 001110 ; Unsigned Binary                          ;
++----------------+--------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top:top|MODER:m2 ;
++----------------+----------+-----------------------------------+
+; Parameter Name ; Value    ; Type                              ;
++----------------+----------+-----------------------------------+
+; OFF            ; 000000   ; Unsigned Binary                   ;
+; ON             ; 000001   ; Unsigned Binary                   ;
+; NTUEE          ; 000011   ; Unsigned Binary                   ;
+; RAIN           ; 000010   ; Unsigned Binary                   ;
+; ARROW          ; 000110   ; Unsigned Binary                   ;
+; DOG            ; 000100   ; Unsigned Binary                   ;
+; DYM_CUBE       ; 001100   ; Unsigned Binary                   ;
+; MAN            ; 001000   ; Unsigned Binary                   ;
+; TEST           ; 001111   ; Unsigned Binary                   ;
+; BLING          ; 11XXXX   ; Unsigned Binary                   ;
+; SATURATE       ; 01XXXX   ; Unsigned Binary                   ;
+; CIRCLE         ; 1XXXXX   ; Unsigned Binary                   ;
+; VERY_FAST      ; 00000010 ; Unsigned Binary                   ;
+; FAST           ; 00000100 ; Unsigned Binary                   ;
+; GENERAL        ; 00001000 ; Unsigned Binary                   ;
+; SLOW           ; 00001100 ; Unsigned Binary                   ;
+; VERY_SLOW      ; 00010000 ; Unsigned Binary                   ;
+; BODY           ; 00       ; Unsigned Binary                   ;
+; HEAD           ; 01       ; Unsigned Binary                   ;
+; HAND           ; 10       ; Unsigned Binary                   ;
+; LEG            ; 11       ; Unsigned Binary                   ;
+; NORMAL         ; 001      ; Unsigned Binary                   ;
+; FORWARD        ; 010      ; Unsigned Binary                   ;
+; BACKWARD       ; 000      ; Unsigned Binary                   ;
++----------------+----------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top:top|letter:m5 ;
++----------------+--------+--------------------------------------+
+; Parameter Name ; Value  ; Type                                 ;
++----------------+--------+--------------------------------------+
+; A              ; 100101 ; Unsigned Binary                      ;
+; B              ; 000001 ; Unsigned Binary                      ;
+; C              ; 000010 ; Unsigned Binary                      ;
+; D              ; 000011 ; Unsigned Binary                      ;
+; E              ; 000100 ; Unsigned Binary                      ;
+; F              ; 000101 ; Unsigned Binary                      ;
+; G              ; 000110 ; Unsigned Binary                      ;
+; H              ; 000111 ; Unsigned Binary                      ;
+; I              ; 001000 ; Unsigned Binary                      ;
+; J              ; 001001 ; Unsigned Binary                      ;
+; K              ; 001010 ; Unsigned Binary                      ;
+; L              ; 001011 ; Unsigned Binary                      ;
+; M              ; 001100 ; Unsigned Binary                      ;
+; N              ; 001101 ; Unsigned Binary                      ;
+; O              ; 001110 ; Unsigned Binary                      ;
+; P              ; 001111 ; Unsigned Binary                      ;
+; Q              ; 010000 ; Unsigned Binary                      ;
+; R              ; 010001 ; Unsigned Binary                      ;
+; S              ; 010010 ; Unsigned Binary                      ;
+; T              ; 010011 ; Unsigned Binary                      ;
+; U              ; 010100 ; Unsigned Binary                      ;
+; V              ; 010101 ; Unsigned Binary                      ;
+; W              ; 010110 ; Unsigned Binary                      ;
+; X              ; 010111 ; Unsigned Binary                      ;
+; Y              ; 011000 ; Unsigned Binary                      ;
+; Z              ; 011001 ; Unsigned Binary                      ;
+; Love           ; 011010 ; Unsigned Binary                      ;
+; n_0            ; 011011 ; Unsigned Binary                      ;
+; n_1            ; 011100 ; Unsigned Binary                      ;
+; n_2            ; 011101 ; Unsigned Binary                      ;
+; n_3            ; 011110 ; Unsigned Binary                      ;
+; n_4            ; 011111 ; Unsigned Binary                      ;
+; n_5            ; 100000 ; Unsigned Binary                      ;
+; n_6            ; 100001 ; Unsigned Binary                      ;
+; n_7            ; 100010 ; Unsigned Binary                      ;
+; n_8            ; 100011 ; Unsigned Binary                      ;
+; n_9            ; 100100 ; Unsigned Binary                      ;
+; idle           ; 0      ; Signed Integer                       ;
+; setting        ; 01     ; Unsigned Binary                      ;
+; save           ; 10     ; Unsigned Binary                      ;
+; print          ; 11     ; Unsigned Binary                      ;
++----------------+--------+--------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top:top|Debounce:deb1 ;
++----------------+-------+-------------------------------------------+
+; Parameter Name ; Value ; Type                                      ;
++----------------+-------+-------------------------------------------+
+; CNT_N          ; 7     ; Signed Integer                            ;
++----------------+-------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top:top|Debounce:deb2 ;
++----------------+-------+-------------------------------------------+
+; Parameter Name ; Value ; Type                                      ;
++----------------+-------+-------------------------------------------+
+; CNT_N          ; 7     ; Signed Integer                            ;
++----------------+-------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top:top|Debounce:deb3 ;
++----------------+-------+-------------------------------------------+
+; Parameter Name ; Value ; Type                                      ;
++----------------+-------+-------------------------------------------+
+; CNT_N          ; 7     ; Signed Integer                            ;
++----------------+-------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top:top|Debounce:deb4 ;
++----------------+-------+-------------------------------------------+
+; Parameter Name ; Value ; Type                                      ;
++----------------+-------+-------------------------------------------+
+; CNT_N          ; 7     ; Signed Integer                            ;
++----------------+-------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: Top:top|MODER:m2|lpm_divide:Mod2 ;
++------------------------+----------------+-----------------------------------------+
+; Parameter Name         ; Value          ; Type                                    ;
++------------------------+----------------+-----------------------------------------+
+; LPM_WIDTHN             ; 7              ; Untyped                                 ;
+; LPM_WIDTHD             ; 5              ; Untyped                                 ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                 ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                 ;
+; LPM_PIPELINE           ; 0              ; Untyped                                 ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                 ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                 ;
+; CBXI_PARAMETER         ; lpm_divide_m9m ; Untyped                                 ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                 ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                 ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                              ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                            ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                            ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                          ;
++------------------------+----------------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: Top:top|MODER:m2|lpm_divide:Mod0 ;
++------------------------+----------------+-----------------------------------------+
+; Parameter Name         ; Value          ; Type                                    ;
++------------------------+----------------+-----------------------------------------+
+; LPM_WIDTHN             ; 7              ; Untyped                                 ;
+; LPM_WIDTHD             ; 6              ; Untyped                                 ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                 ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                 ;
+; LPM_PIPELINE           ; 0              ; Untyped                                 ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                 ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                 ;
+; CBXI_PARAMETER         ; lpm_divide_n9m ; Untyped                                 ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                 ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                 ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                              ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                            ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                            ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                          ;
++------------------------+----------------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: Top:top|MODER:m2|lpm_divide:Mod1 ;
++------------------------+----------------+-----------------------------------------+
+; Parameter Name         ; Value          ; Type                                    ;
++------------------------+----------------+-----------------------------------------+
+; LPM_WIDTHN             ; 7              ; Untyped                                 ;
+; LPM_WIDTHD             ; 7              ; Untyped                                 ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                 ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                 ;
+; LPM_PIPELINE           ; 0              ; Untyped                                 ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                 ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                 ;
+; CBXI_PARAMETER         ; lpm_divide_o9m ; Untyped                                 ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                 ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                 ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                              ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                            ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                            ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                          ;
++------------------------+----------------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 480                         ;
+; cycloneiii_ff         ; 1757                        ;
+;     CLR               ; 471                         ;
+;     CLR SCLR          ; 2                           ;
+;     CLR SLD           ; 6                           ;
+;     ENA CLR           ; 1251                        ;
+;     ENA CLR SCLR      ; 7                           ;
+;     SCLR              ; 4                           ;
+;     plain             ; 16                          ;
+; cycloneiii_io_obuf    ; 141                         ;
+; cycloneiii_lcell_comb ; 10814                       ;
+;     arith             ; 203                         ;
+;         2 data inputs ; 129                         ;
+;         3 data inputs ; 74                          ;
+;     normal            ; 10611                       ;
+;         0 data inputs ; 26                          ;
+;         1 data inputs ; 8                           ;
+;         2 data inputs ; 485                         ;
+;         3 data inputs ; 1499                        ;
+;         4 data inputs ; 8593                        ;
+;                       ;                             ;
+; Max LUT depth         ; 28.90                       ;
+; Average LUT depth     ; 14.63                       ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:01:18     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 15.0.0 Build 145 04/22/2015 SJ Full Version
+    Info: Processing started: Sat Jun 23 23:02:13 2018
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE2_115 -c DE2_115
+Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
+Info (12021): Found 8 design units, including 8 entities, in source file top.v
+    Info (12023): Found entity 1: Top
+    Info (12023): Found entity 2: controller
+    Info (12023): Found entity 3: MODER
+    Info (12023): Found entity 4: ledcube
+    Info (12023): Found entity 5: clk_divider
+    Info (12023): Found entity 6: lfsr
+    Info (12023): Found entity 7: Debounce
+    Info (12023): Found entity 8: letter
+Info (12021): Found 1 design units, including 1 entities, in source file de2_115.sv
+    Info (12023): Found entity 1: DE2_115
+Warning (10236): Verilog HDL Implicit Net warning at Top.v(2050): created implicit net for "o_debounced"
+Info (12127): Elaborating entity "DE2_115" for the top level hierarchy
+Warning (10034): Output port "LEDG" at DE2_115.sv(8) has no driver
+Warning (10034): Output port "LEDR" at DE2_115.sv(9) has no driver
+Warning (10034): Output port "HEX0" at DE2_115.sv(12) has no driver
+Warning (10034): Output port "HEX1" at DE2_115.sv(13) has no driver
+Warning (10034): Output port "HEX2" at DE2_115.sv(14) has no driver
+Warning (10034): Output port "HEX3" at DE2_115.sv(15) has no driver
+Warning (10034): Output port "HEX4" at DE2_115.sv(16) has no driver
+Warning (10034): Output port "HEX5" at DE2_115.sv(17) has no driver
+Warning (10034): Output port "HEX6" at DE2_115.sv(18) has no driver
+Warning (10034): Output port "HEX7" at DE2_115.sv(19) has no driver
+Warning (10034): Output port "VGA_B" at DE2_115.sv(38) has no driver
+Warning (10034): Output port "VGA_G" at DE2_115.sv(41) has no driver
+Warning (10034): Output port "VGA_R" at DE2_115.sv(43) has no driver
+Warning (10034): Output port "ENET0_TX_DATA" at DE2_115.sv(68) has no driver
+Warning (10034): Output port "ENET1_TX_DATA" at DE2_115.sv(84) has no driver
+Warning (10034): Output port "OTG_ADDR" at DE2_115.sv(94) has no driver
+Warning (10034): Output port "DRAM_ADDR" at DE2_115.sv(101) has no driver
+Warning (10034): Output port "DRAM_BA" at DE2_115.sv(102) has no driver
+Warning (10034): Output port "DRAM_DQM" at DE2_115.sv(108) has no driver
+Warning (10034): Output port "SRAM_ADDR" at DE2_115.sv(111) has no driver
+Warning (10034): Output port "FL_ADDR" at DE2_115.sv(118) has no driver
+Warning (10034): Output port "HSMC_TX_D_P" at DE2_115.sv(135) has no driver
+Warning (10034): Output port "SMA_CLKOUT" at DE2_115.sv(7) has no driver
+Warning (10034): Output port "LCD_BLON" at DE2_115.sv(20) has no driver
+Warning (10034): Output port "LCD_EN" at DE2_115.sv(22) has no driver
+Warning (10034): Output port "LCD_ON" at DE2_115.sv(23) has no driver
+Warning (10034): Output port "LCD_RS" at DE2_115.sv(24) has no driver
+Warning (10034): Output port "LCD_RW" at DE2_115.sv(25) has no driver
+Warning (10034): Output port "UART_CTS" at DE2_115.sv(26) has no driver
+Warning (10034): Output port "UART_TXD" at DE2_115.sv(29) has no driver
+Warning (10034): Output port "SD_CLK" at DE2_115.sv(34) has no driver
+Warning (10034): Output port "VGA_BLANK_N" at DE2_115.sv(39) has no driver
+Warning (10034): Output port "VGA_CLK" at DE2_115.sv(40) has no driver
+Warning (10034): Output port "VGA_HS" at DE2_115.sv(42) has no driver
+Warning (10034): Output port "VGA_SYNC_N" at DE2_115.sv(44) has no driver
+Warning (10034): Output port "VGA_VS" at DE2_115.sv(45) has no driver
+Warning (10034): Output port "AUD_DACDAT" at DE2_115.sv(49) has no driver
+Warning (10034): Output port "AUD_XCK" at DE2_115.sv(51) has no driver
+Warning (10034): Output port "EEP_I2C_SCLK" at DE2_115.sv(52) has no driver
+Warning (10034): Output port "I2C_SCLK" at DE2_115.sv(54) has no driver
+Warning (10034): Output port "ENET0_GTX_CLK" at DE2_115.sv(56) has no driver
+Warning (10034): Output port "ENET0_MDC" at DE2_115.sv(58) has no driver
+Warning (10034): Output port "ENET0_RST_N" at DE2_115.sv(60) has no driver
+Warning (10034): Output port "ENET0_TX_EN" at DE2_115.sv(69) has no driver
+Warning (10034): Output port "ENET0_TX_ER" at DE2_115.sv(70) has no driver
+Warning (10034): Output port "ENET1_GTX_CLK" at DE2_115.sv(72) has no driver
+Warning (10034): Output port "ENET1_MDC" at DE2_115.sv(74) has no driver
+Warning (10034): Output port "ENET1_RST_N" at DE2_115.sv(76) has no driver
+Warning (10034): Output port "ENET1_TX_EN" at DE2_115.sv(85) has no driver
+Warning (10034): Output port "ENET1_TX_ER" at DE2_115.sv(86) has no driver
+Warning (10034): Output port "TD_RESET_N" at DE2_115.sv(91) has no driver
+Warning (10034): Output port "OTG_CS_N" at DE2_115.sv(95) has no driver
+Warning (10034): Output port "OTG_WR_N" at DE2_115.sv(96) has no driver
+Warning (10034): Output port "OTG_RD_N" at DE2_115.sv(97) has no driver
+Warning (10034): Output port "OTG_RST_N" at DE2_115.sv(99) has no driver
+Warning (10034): Output port "DRAM_CAS_N" at DE2_115.sv(103) has no driver
+Warning (10034): Output port "DRAM_CKE" at DE2_115.sv(104) has no driver
+Warning (10034): Output port "DRAM_CLK" at DE2_115.sv(105) has no driver
+Warning (10034): Output port "DRAM_CS_N" at DE2_115.sv(106) has no driver
+Warning (10034): Output port "DRAM_RAS_N" at DE2_115.sv(109) has no driver
+Warning (10034): Output port "DRAM_WE_N" at DE2_115.sv(110) has no driver
+Warning (10034): Output port "SRAM_CE_N" at DE2_115.sv(112) has no driver
+Warning (10034): Output port "SRAM_LB_N" at DE2_115.sv(114) has no driver
+Warning (10034): Output port "SRAM_OE_N" at DE2_115.sv(115) has no driver
+Warning (10034): Output port "SRAM_UB_N" at DE2_115.sv(116) has no driver
+Warning (10034): Output port "SRAM_WE_N" at DE2_115.sv(117) has no driver
+Warning (10034): Output port "FL_CE_N" at DE2_115.sv(119) has no driver
+Warning (10034): Output port "FL_OE_N" at DE2_115.sv(121) has no driver
+Warning (10034): Output port "FL_RST_N" at DE2_115.sv(122) has no driver
+Warning (10034): Output port "FL_WE_N" at DE2_115.sv(124) has no driver
+Warning (10034): Output port "FL_WP_N" at DE2_115.sv(125) has no driver
+Warning (10034): Output port "HSMC_CLKOUT_P1" at DE2_115.sv(130) has no driver
+Warning (10034): Output port "HSMC_CLKOUT_P2" at DE2_115.sv(131) has no driver
+Warning (10034): Output port "HSMC_CLKOUT0" at DE2_115.sv(132) has no driver
+Info (12128): Elaborating entity "Top" for hierarchy "Top:top"
+Info (12128): Elaborating entity "ledcube" for hierarchy "Top:top|ledcube:m0"
+Warning (10230): Verilog HDL assignment warning at Top.v(1013): truncated value with size 32 to match size of target (8)
+Info (12128): Elaborating entity "controller" for hierarchy "Top:top|controller:m1"
+Warning (10027): Verilog HDL or VHDL warning at the Top.v(136): index expression is not wide enough to address all of the elements in the array
+Warning (10230): Verilog HDL assignment warning at Top.v(141): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at Top.v(144): truncated value with size 32 to match size of target (4)
+Warning (10027): Verilog HDL or VHDL warning at the Top.v(153): index expression is not wide enough to address all of the elements in the array
+Warning (10240): Verilog HDL Always Construct warning at Top.v(148): inferring latch(es) for variable "time_duration_w", which holds its previous value in one or more paths through the always construct
+Warning (10230): Verilog HDL assignment warning at Top.v(172): truncated value with size 32 to match size of target (4)
+Info (10264): Verilog HDL Case Statement information at Top.v(163): all case item expressions in this case statement are onehot
+Warning (10240): Verilog HDL Always Construct warning at Top.v(194): inferring latch(es) for variable "i", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "time_duration_w[0]" at Top.v(152)
+Info (10041): Inferred latch for "time_duration_w[1]" at Top.v(152)
+Info (10041): Inferred latch for "time_duration_w[2]" at Top.v(152)
+Info (10041): Inferred latch for "time_duration_w[3]" at Top.v(152)
+Info (10041): Inferred latch for "time_duration_w[4]" at Top.v(152)
+Info (10041): Inferred latch for "time_duration_w[5]" at Top.v(152)
+Info (10041): Inferred latch for "time_duration_w[6]" at Top.v(152)
+Info (10041): Inferred latch for "time_duration_w[7]" at Top.v(152)
+Info (12128): Elaborating entity "MODER" for hierarchy "Top:top|MODER:m2"
+Warning (10230): Verilog HDL assignment warning at Top.v(840): truncated value with size 32 to match size of target (1)
+Warning (10230): Verilog HDL assignment warning at Top.v(859): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at Top.v(861): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at Top.v(869): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at Top.v(870): truncated value with size 32 to match size of target (3)
+Warning (10230): Verilog HDL assignment warning at Top.v(884): truncated value with size 32 to match size of target (3)
+Warning (10230): Verilog HDL assignment warning at Top.v(886): truncated value with size 32 to match size of target (3)
+Warning (10230): Verilog HDL assignment warning at Top.v(890): truncated value with size 32 to match size of target (3)
+Warning (10230): Verilog HDL assignment warning at Top.v(912): truncated value with size 32 to match size of target (1)
+Warning (10935): Verilog HDL Casex/Casez warning at Top.v(914): casex/casez item expression overlaps with a previous casex/casez item expression
+Warning (10240): Verilog HDL Always Construct warning at Top.v(813): inferring latch(es) for variable "i", which holds its previous value in one or more paths through the always construct
+Warning (10240): Verilog HDL Always Construct warning at Top.v(813): inferring latch(es) for variable "j", which holds its previous value in one or more paths through the always construct
+Warning (10230): Verilog HDL assignment warning at Top.v(969): truncated value with size 32 to match size of target (7)
+Warning (10230): Verilog HDL assignment warning at Top.v(970): truncated value with size 32 to match size of target (9)
+Info (12128): Elaborating entity "clk_divider" for hierarchy "Top:top|clk_divider:m3"
+Warning (10230): Verilog HDL assignment warning at Top.v(2009): truncated value with size 32 to match size of target (28)
+Info (12128): Elaborating entity "lfsr" for hierarchy "Top:top|lfsr:m4"
+Info (12128): Elaborating entity "letter" for hierarchy "Top:top|letter:m5"
+Warning (10230): Verilog HDL assignment warning at Top.v(2165): truncated value with size 32 to match size of target (3)
+Warning (10230): Verilog HDL assignment warning at Top.v(2166): truncated value with size 32 to match size of target (3)
+Warning (10230): Verilog HDL assignment warning at Top.v(2207): truncated value with size 32 to match size of target (4)
+Warning (10240): Verilog HDL Always Construct warning at Top.v(2161): inferring latch(es) for variable "j", which holds its previous value in one or more paths through the always construct
+Info (12128): Elaborating entity "Debounce" for hierarchy "Top:top|Debounce:deb1"
+Warning (10036): Verilog HDL or VHDL warning at Top.v(2050): object "o_debounced" assigned a value but never read
+Warning (10230): Verilog HDL assignment warning at Top.v(2055): truncated value with size 32 to match size of target (3)
+Warning (10230): Verilog HDL assignment warning at Top.v(2057): truncated value with size 32 to match size of target (3)
+Info (278001): Inferred 3 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Top:top|MODER:m2|Mod2"
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Top:top|MODER:m2|Mod0"
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Top:top|MODER:m2|Mod1"
+Info (12130): Elaborated megafunction instantiation "Top:top|MODER:m2|lpm_divide:Mod2"
+Info (12133): Instantiated megafunction "Top:top|MODER:m2|lpm_divide:Mod2" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHN" = "7"
+    Info (12134): Parameter "LPM_WIDTHD" = "5"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_m9m.tdf
+    Info (12023): Found entity 1: lpm_divide_m9m
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_bkh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_bkh
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_a4f.tdf
+    Info (12023): Found entity 1: alt_u_div_a4f
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_7pc.tdf
+    Info (12023): Found entity 1: add_sub_7pc
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8pc.tdf
+    Info (12023): Found entity 1: add_sub_8pc
+Info (12130): Elaborated megafunction instantiation "Top:top|MODER:m2|lpm_divide:Mod0"
+Info (12133): Instantiated megafunction "Top:top|MODER:m2|lpm_divide:Mod0" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHN" = "7"
+    Info (12134): Parameter "LPM_WIDTHD" = "6"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_n9m.tdf
+    Info (12023): Found entity 1: lpm_divide_n9m
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_ckh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_ckh
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_c4f.tdf
+    Info (12023): Found entity 1: alt_u_div_c4f
+Info (12130): Elaborated megafunction instantiation "Top:top|MODER:m2|lpm_divide:Mod1"
+Info (12133): Instantiated megafunction "Top:top|MODER:m2|lpm_divide:Mod1" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHN" = "7"
+    Info (12134): Parameter "LPM_WIDTHD" = "7"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_o9m.tdf
+    Info (12023): Found entity 1: lpm_divide_o9m
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_dkh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_dkh
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_e4f.tdf
+    Info (12023): Found entity 1: alt_u_div_e4f
+Warning (13034): The following nodes have both tri-state and non-tri-state drivers
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[0]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[1]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[2]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[3]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[4]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[5]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[6]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[7]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[8]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[9]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[10]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[12]" and its non-tri-state driver.
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO[14]" and its non-tri-state driver.
+Warning (13039): The following bidirectional pins have no drivers
+    Warning (13040): bidirectional pin "LCD_DATA[0]" has no driver
+    Warning (13040): bidirectional pin "LCD_DATA[1]" has no driver
+    Warning (13040): bidirectional pin "LCD_DATA[2]" has no driver
+    Warning (13040): bidirectional pin "LCD_DATA[3]" has no driver
+    Warning (13040): bidirectional pin "LCD_DATA[4]" has no driver
+    Warning (13040): bidirectional pin "LCD_DATA[5]" has no driver
+    Warning (13040): bidirectional pin "LCD_DATA[6]" has no driver
+    Warning (13040): bidirectional pin "LCD_DATA[7]" has no driver
+    Warning (13040): bidirectional pin "PS2_CLK" has no driver
+    Warning (13040): bidirectional pin "PS2_DAT" has no driver
+    Warning (13040): bidirectional pin "PS2_CLK2" has no driver
+    Warning (13040): bidirectional pin "PS2_DAT2" has no driver
+    Warning (13040): bidirectional pin "SD_CMD" has no driver
+    Warning (13040): bidirectional pin "SD_DAT[0]" has no driver
+    Warning (13040): bidirectional pin "SD_DAT[1]" has no driver
+    Warning (13040): bidirectional pin "SD_DAT[2]" has no driver
+    Warning (13040): bidirectional pin "SD_DAT[3]" has no driver
+    Warning (13040): bidirectional pin "AUD_ADCLRCK" has no driver
+    Warning (13040): bidirectional pin "AUD_BCLK" has no driver
+    Warning (13040): bidirectional pin "AUD_DACLRCK" has no driver
+    Warning (13040): bidirectional pin "EEP_I2C_SDAT" has no driver
+    Warning (13040): bidirectional pin "I2C_SDAT" has no driver
+    Warning (13040): bidirectional pin "OTG_DATA[0]" has no driver
+    Warning (13040): bidirectional pin "OTG_DATA[1]" has no driver
+    Warning (13040): bidirectional pin "OTG_DATA[2]" has no driver
+    Warning (13040): bidirectional pin "OTG_DATA[3]" has no driver
+    Warning (13040): bidirectional pin "OTG_DATA[4]" has no driver
+    Warning (13040): bidirectional pin "OTG_DATA[5]" has no driver
+    Warning (13040): bidirectional pin "OTG_DATA[6]" has no driver
+    Warning (13040): bidirectional pin "OTG_DATA[7]" has no driver
+    Warning (13040): bidirectional pin "OTG_DATA[8]" has no driver
+    Warning (13040): bidirectional pin "OTG_DATA[9]" has no driver
+    Warning (13040): bidirectional pin "OTG_DATA[10]" has no driver
+    Warning (13040): bidirectional pin "OTG_DATA[11]" has no driver
+    Warning (13040): bidirectional pin "OTG_DATA[12]" has no driver
+    Warning (13040): bidirectional pin "OTG_DATA[13]" has no driver
+    Warning (13040): bidirectional pin "OTG_DATA[14]" has no driver
+    Warning (13040): bidirectional pin "OTG_DATA[15]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[0]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[1]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[2]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[3]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[4]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[5]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[6]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[7]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[8]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[9]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[10]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[11]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[12]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[13]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[14]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[15]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[16]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[17]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[18]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[19]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[20]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[21]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[22]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[23]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[24]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[25]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[26]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[27]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[28]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[29]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[30]" has no driver
+    Warning (13040): bidirectional pin "DRAM_DQ[31]" has no driver
+    Warning (13040): bidirectional pin "SRAM_DQ[0]" has no driver
+    Warning (13040): bidirectional pin "SRAM_DQ[1]" has no driver
+    Warning (13040): bidirectional pin "SRAM_DQ[2]" has no driver
+    Warning (13040): bidirectional pin "SRAM_DQ[3]" has no driver
+    Warning (13040): bidirectional pin "SRAM_DQ[4]" has no driver
+    Warning (13040): bidirectional pin "SRAM_DQ[5]" has no driver
+    Warning (13040): bidirectional pin "SRAM_DQ[6]" has no driver
+    Warning (13040): bidirectional pin "SRAM_DQ[7]" has no driver
+    Warning (13040): bidirectional pin "SRAM_DQ[8]" has no driver
+    Warning (13040): bidirectional pin "SRAM_DQ[9]" has no driver
+    Warning (13040): bidirectional pin "SRAM_DQ[10]" has no driver
+    Warning (13040): bidirectional pin "SRAM_DQ[11]" has no driver
+    Warning (13040): bidirectional pin "SRAM_DQ[12]" has no driver
+    Warning (13040): bidirectional pin "SRAM_DQ[13]" has no driver
+    Warning (13040): bidirectional pin "SRAM_DQ[14]" has no driver
+    Warning (13040): bidirectional pin "SRAM_DQ[15]" has no driver
+    Warning (13040): bidirectional pin "FL_DQ[0]" has no driver
+    Warning (13040): bidirectional pin "FL_DQ[1]" has no driver
+    Warning (13040): bidirectional pin "FL_DQ[2]" has no driver
+    Warning (13040): bidirectional pin "FL_DQ[3]" has no driver
+    Warning (13040): bidirectional pin "FL_DQ[4]" has no driver
+    Warning (13040): bidirectional pin "FL_DQ[5]" has no driver
+    Warning (13040): bidirectional pin "FL_DQ[6]" has no driver
+    Warning (13040): bidirectional pin "FL_DQ[7]" has no driver
+    Warning (13040): bidirectional pin "GPIO[11]" has no driver
+    Warning (13040): bidirectional pin "GPIO[13]" has no driver
+    Warning (13040): bidirectional pin "GPIO[15]" has no driver
+    Warning (13040): bidirectional pin "GPIO[16]" has no driver
+    Warning (13040): bidirectional pin "GPIO[17]" has no driver
+    Warning (13040): bidirectional pin "GPIO[18]" has no driver
+    Warning (13040): bidirectional pin "GPIO[19]" has no driver
+    Warning (13040): bidirectional pin "GPIO[20]" has no driver
+    Warning (13040): bidirectional pin "GPIO[21]" has no driver
+    Warning (13040): bidirectional pin "GPIO[22]" has no driver
+    Warning (13040): bidirectional pin "GPIO[23]" has no driver
+    Warning (13040): bidirectional pin "GPIO[24]" has no driver
+    Warning (13040): bidirectional pin "GPIO[25]" has no driver
+    Warning (13040): bidirectional pin "GPIO[26]" has no driver
+    Warning (13040): bidirectional pin "GPIO[27]" has no driver
+    Warning (13040): bidirectional pin "GPIO[28]" has no driver
+    Warning (13040): bidirectional pin "GPIO[29]" has no driver
+    Warning (13040): bidirectional pin "GPIO[30]" has no driver
+    Warning (13040): bidirectional pin "GPIO[31]" has no driver
+    Warning (13040): bidirectional pin "GPIO[32]" has no driver
+    Warning (13040): bidirectional pin "GPIO[33]" has no driver
+    Warning (13040): bidirectional pin "GPIO[34]" has no driver
+    Warning (13040): bidirectional pin "GPIO[35]" has no driver
+    Warning (13040): bidirectional pin "HSMC_D[0]" has no driver
+    Warning (13040): bidirectional pin "HSMC_D[1]" has no driver
+    Warning (13040): bidirectional pin "HSMC_D[2]" has no driver
+    Warning (13040): bidirectional pin "HSMC_D[3]" has no driver
+    Warning (13040): bidirectional pin "EX_IO[0]" has no driver
+    Warning (13040): bidirectional pin "EX_IO[1]" has no driver
+    Warning (13040): bidirectional pin "EX_IO[2]" has no driver
+    Warning (13040): bidirectional pin "EX_IO[3]" has no driver
+    Warning (13040): bidirectional pin "EX_IO[4]" has no driver
+    Warning (13040): bidirectional pin "EX_IO[5]" has no driver
+    Warning (13040): bidirectional pin "EX_IO[6]" has no driver
+Info (13000): Registers with preset signals will power-up high
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13009): TRI or OPNDRN buffers permanently enabled
+    Warning (13010): Node "GPIO[0]~synth"
+    Warning (13010): Node "GPIO[1]~synth"
+    Warning (13010): Node "GPIO[2]~synth"
+    Warning (13010): Node "GPIO[3]~synth"
+    Warning (13010): Node "GPIO[4]~synth"
+    Warning (13010): Node "GPIO[5]~synth"
+    Warning (13010): Node "GPIO[6]~synth"
+    Warning (13010): Node "GPIO[7]~synth"
+    Warning (13010): Node "GPIO[8]~synth"
+    Warning (13010): Node "GPIO[9]~synth"
+    Warning (13010): Node "GPIO[10]~synth"
+    Warning (13010): Node "GPIO[12]~synth"
+    Warning (13010): Node "GPIO[14]~synth"
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "SMA_CLKOUT" is stuck at GND
+    Warning (13410): Pin "LEDG[0]" is stuck at GND
+    Warning (13410): Pin "LEDG[1]" is stuck at GND
+    Warning (13410): Pin "LEDG[2]" is stuck at GND
+    Warning (13410): Pin "LEDG[3]" is stuck at GND
+    Warning (13410): Pin "LEDG[4]" is stuck at GND
+    Warning (13410): Pin "LEDG[5]" is stuck at GND
+    Warning (13410): Pin "LEDG[6]" is stuck at GND
+    Warning (13410): Pin "LEDG[7]" is stuck at GND
+    Warning (13410): Pin "LEDG[8]" is stuck at GND
+    Warning (13410): Pin "LEDR[0]" is stuck at GND
+    Warning (13410): Pin "LEDR[1]" is stuck at GND
+    Warning (13410): Pin "LEDR[2]" is stuck at GND
+    Warning (13410): Pin "LEDR[3]" is stuck at GND
+    Warning (13410): Pin "LEDR[4]" is stuck at GND
+    Warning (13410): Pin "LEDR[5]" is stuck at GND
+    Warning (13410): Pin "LEDR[6]" is stuck at GND
+    Warning (13410): Pin "LEDR[7]" is stuck at GND
+    Warning (13410): Pin "LEDR[8]" is stuck at GND
+    Warning (13410): Pin "LEDR[9]" is stuck at GND
+    Warning (13410): Pin "LEDR[10]" is stuck at GND
+    Warning (13410): Pin "LEDR[11]" is stuck at GND
+    Warning (13410): Pin "LEDR[12]" is stuck at GND
+    Warning (13410): Pin "LEDR[13]" is stuck at GND
+    Warning (13410): Pin "LEDR[14]" is stuck at GND
+    Warning (13410): Pin "LEDR[15]" is stuck at GND
+    Warning (13410): Pin "LEDR[16]" is stuck at GND
+    Warning (13410): Pin "LEDR[17]" is stuck at GND
+    Warning (13410): Pin "HEX0[0]" is stuck at GND
+    Warning (13410): Pin "HEX0[1]" is stuck at GND
+    Warning (13410): Pin "HEX0[2]" is stuck at GND
+    Warning (13410): Pin "HEX0[3]" is stuck at GND
+    Warning (13410): Pin "HEX0[4]" is stuck at GND
+    Warning (13410): Pin "HEX0[5]" is stuck at GND
+    Warning (13410): Pin "HEX0[6]" is stuck at GND
+    Warning (13410): Pin "HEX1[0]" is stuck at GND
+    Warning (13410): Pin "HEX1[1]" is stuck at GND
+    Warning (13410): Pin "HEX1[2]" is stuck at GND
+    Warning (13410): Pin "HEX1[3]" is stuck at GND
+    Warning (13410): Pin "HEX1[4]" is stuck at GND
+    Warning (13410): Pin "HEX1[5]" is stuck at GND
+    Warning (13410): Pin "HEX1[6]" is stuck at GND
+    Warning (13410): Pin "HEX2[0]" is stuck at GND
+    Warning (13410): Pin "HEX2[1]" is stuck at GND
+    Warning (13410): Pin "HEX2[2]" is stuck at GND
+    Warning (13410): Pin "HEX2[3]" is stuck at GND
+    Warning (13410): Pin "HEX2[4]" is stuck at GND
+    Warning (13410): Pin "HEX2[5]" is stuck at GND
+    Warning (13410): Pin "HEX2[6]" is stuck at GND
+    Warning (13410): Pin "HEX3[0]" is stuck at GND
+    Warning (13410): Pin "HEX3[1]" is stuck at GND
+    Warning (13410): Pin "HEX3[2]" is stuck at GND
+    Warning (13410): Pin "HEX3[3]" is stuck at GND
+    Warning (13410): Pin "HEX3[4]" is stuck at GND
+    Warning (13410): Pin "HEX3[5]" is stuck at GND
+    Warning (13410): Pin "HEX3[6]" is stuck at GND
+    Warning (13410): Pin "HEX4[0]" is stuck at GND
+    Warning (13410): Pin "HEX4[1]" is stuck at GND
+    Warning (13410): Pin "HEX4[2]" is stuck at GND
+    Warning (13410): Pin "HEX4[3]" is stuck at GND
+    Warning (13410): Pin "HEX4[4]" is stuck at GND
+    Warning (13410): Pin "HEX4[5]" is stuck at GND
+    Warning (13410): Pin "HEX4[6]" is stuck at GND
+    Warning (13410): Pin "HEX5[0]" is stuck at GND
+    Warning (13410): Pin "HEX5[1]" is stuck at GND
+    Warning (13410): Pin "HEX5[2]" is stuck at GND
+    Warning (13410): Pin "HEX5[3]" is stuck at GND
+    Warning (13410): Pin "HEX5[4]" is stuck at GND
+    Warning (13410): Pin "HEX5[5]" is stuck at GND
+    Warning (13410): Pin "HEX5[6]" is stuck at GND
+    Warning (13410): Pin "HEX6[0]" is stuck at GND
+    Warning (13410): Pin "HEX6[1]" is stuck at GND
+    Warning (13410): Pin "HEX6[2]" is stuck at GND
+    Warning (13410): Pin "HEX6[3]" is stuck at GND
+    Warning (13410): Pin "HEX6[4]" is stuck at GND
+    Warning (13410): Pin "HEX6[5]" is stuck at GND
+    Warning (13410): Pin "HEX6[6]" is stuck at GND
+    Warning (13410): Pin "HEX7[0]" is stuck at GND
+    Warning (13410): Pin "HEX7[1]" is stuck at GND
+    Warning (13410): Pin "HEX7[2]" is stuck at GND
+    Warning (13410): Pin "HEX7[3]" is stuck at GND
+    Warning (13410): Pin "HEX7[4]" is stuck at GND
+    Warning (13410): Pin "HEX7[5]" is stuck at GND
+    Warning (13410): Pin "HEX7[6]" is stuck at GND
+    Warning (13410): Pin "LCD_BLON" is stuck at GND
+    Warning (13410): Pin "LCD_EN" is stuck at GND
+    Warning (13410): Pin "LCD_ON" is stuck at GND
+    Warning (13410): Pin "LCD_RS" is stuck at GND
+    Warning (13410): Pin "LCD_RW" is stuck at GND
+    Warning (13410): Pin "UART_CTS" is stuck at GND
+    Warning (13410): Pin "UART_TXD" is stuck at GND
+    Warning (13410): Pin "SD_CLK" is stuck at GND
+    Warning (13410): Pin "VGA_B[0]" is stuck at GND
+    Warning (13410): Pin "VGA_B[1]" is stuck at GND
+    Warning (13410): Pin "VGA_B[2]" is stuck at GND
+    Warning (13410): Pin "VGA_B[3]" is stuck at GND
+    Warning (13410): Pin "VGA_B[4]" is stuck at GND
+    Warning (13410): Pin "VGA_B[5]" is stuck at GND
+    Warning (13410): Pin "VGA_B[6]" is stuck at GND
+    Warning (13410): Pin "VGA_B[7]" is stuck at GND
+    Warning (13410): Pin "VGA_BLANK_N" is stuck at GND
+    Warning (13410): Pin "VGA_CLK" is stuck at GND
+    Warning (13410): Pin "VGA_G[0]" is stuck at GND
+    Warning (13410): Pin "VGA_G[1]" is stuck at GND
+    Warning (13410): Pin "VGA_G[2]" is stuck at GND
+    Warning (13410): Pin "VGA_G[3]" is stuck at GND
+    Warning (13410): Pin "VGA_G[4]" is stuck at GND
+    Warning (13410): Pin "VGA_G[5]" is stuck at GND
+    Warning (13410): Pin "VGA_G[6]" is stuck at GND
+    Warning (13410): Pin "VGA_G[7]" is stuck at GND
+    Warning (13410): Pin "VGA_HS" is stuck at GND
+    Warning (13410): Pin "VGA_R[0]" is stuck at GND
+    Warning (13410): Pin "VGA_R[1]" is stuck at GND
+    Warning (13410): Pin "VGA_R[2]" is stuck at GND
+    Warning (13410): Pin "VGA_R[3]" is stuck at GND
+    Warning (13410): Pin "VGA_R[4]" is stuck at GND
+    Warning (13410): Pin "VGA_R[5]" is stuck at GND
+    Warning (13410): Pin "VGA_R[6]" is stuck at GND
+    Warning (13410): Pin "VGA_R[7]" is stuck at GND
+    Warning (13410): Pin "VGA_SYNC_N" is stuck at GND
+    Warning (13410): Pin "VGA_VS" is stuck at GND
+    Warning (13410): Pin "AUD_DACDAT" is stuck at GND
+    Warning (13410): Pin "AUD_XCK" is stuck at GND
+    Warning (13410): Pin "EEP_I2C_SCLK" is stuck at GND
+    Warning (13410): Pin "I2C_SCLK" is stuck at GND
+    Warning (13410): Pin "ENET0_GTX_CLK" is stuck at GND
+    Warning (13410): Pin "ENET0_MDC" is stuck at GND
+    Warning (13410): Pin "ENET0_RST_N" is stuck at GND
+    Warning (13410): Pin "ENET0_TX_DATA[0]" is stuck at GND
+    Warning (13410): Pin "ENET0_TX_DATA[1]" is stuck at GND
+    Warning (13410): Pin "ENET0_TX_DATA[2]" is stuck at GND
+    Warning (13410): Pin "ENET0_TX_DATA[3]" is stuck at GND
+    Warning (13410): Pin "ENET0_TX_EN" is stuck at GND
+    Warning (13410): Pin "ENET0_TX_ER" is stuck at GND
+    Warning (13410): Pin "ENET1_GTX_CLK" is stuck at GND
+    Warning (13410): Pin "ENET1_MDC" is stuck at GND
+    Warning (13410): Pin "ENET1_RST_N" is stuck at GND
+    Warning (13410): Pin "ENET1_TX_DATA[0]" is stuck at GND
+    Warning (13410): Pin "ENET1_TX_DATA[1]" is stuck at GND
+    Warning (13410): Pin "ENET1_TX_DATA[2]" is stuck at GND
+    Warning (13410): Pin "ENET1_TX_DATA[3]" is stuck at GND
+    Warning (13410): Pin "ENET1_TX_EN" is stuck at GND
+    Warning (13410): Pin "ENET1_TX_ER" is stuck at GND
+    Warning (13410): Pin "TD_RESET_N" is stuck at GND
+    Warning (13410): Pin "OTG_ADDR[0]" is stuck at GND
+    Warning (13410): Pin "OTG_ADDR[1]" is stuck at GND
+    Warning (13410): Pin "OTG_CS_N" is stuck at GND
+    Warning (13410): Pin "OTG_WR_N" is stuck at GND
+    Warning (13410): Pin "OTG_RD_N" is stuck at GND
+    Warning (13410): Pin "OTG_RST_N" is stuck at GND
+    Warning (13410): Pin "DRAM_ADDR[0]" is stuck at GND
+    Warning (13410): Pin "DRAM_ADDR[1]" is stuck at GND
+    Warning (13410): Pin "DRAM_ADDR[2]" is stuck at GND
+    Warning (13410): Pin "DRAM_ADDR[3]" is stuck at GND
+    Warning (13410): Pin "DRAM_ADDR[4]" is stuck at GND
+    Warning (13410): Pin "DRAM_ADDR[5]" is stuck at GND
+    Warning (13410): Pin "DRAM_ADDR[6]" is stuck at GND
+    Warning (13410): Pin "DRAM_ADDR[7]" is stuck at GND
+    Warning (13410): Pin "DRAM_ADDR[8]" is stuck at GND
+    Warning (13410): Pin "DRAM_ADDR[9]" is stuck at GND
+    Warning (13410): Pin "DRAM_ADDR[10]" is stuck at GND
+    Warning (13410): Pin "DRAM_ADDR[11]" is stuck at GND
+    Warning (13410): Pin "DRAM_ADDR[12]" is stuck at GND
+    Warning (13410): Pin "DRAM_BA[0]" is stuck at GND
+    Warning (13410): Pin "DRAM_BA[1]" is stuck at GND
+    Warning (13410): Pin "DRAM_CAS_N" is stuck at GND
+    Warning (13410): Pin "DRAM_CKE" is stuck at GND
+    Warning (13410): Pin "DRAM_CLK" is stuck at GND
+    Warning (13410): Pin "DRAM_CS_N" is stuck at GND
+    Warning (13410): Pin "DRAM_DQM[0]" is stuck at GND
+    Warning (13410): Pin "DRAM_DQM[1]" is stuck at GND
+    Warning (13410): Pin "DRAM_DQM[2]" is stuck at GND
+    Warning (13410): Pin "DRAM_DQM[3]" is stuck at GND
+    Warning (13410): Pin "DRAM_RAS_N" is stuck at GND
+    Warning (13410): Pin "DRAM_WE_N" is stuck at GND
+    Warning (13410): Pin "SRAM_ADDR[0]" is stuck at GND
+    Warning (13410): Pin "SRAM_ADDR[1]" is stuck at GND
+    Warning (13410): Pin "SRAM_ADDR[2]" is stuck at GND
+    Warning (13410): Pin "SRAM_ADDR[3]" is stuck at GND
+    Warning (13410): Pin "SRAM_ADDR[4]" is stuck at GND
+    Warning (13410): Pin "SRAM_ADDR[5]" is stuck at GND
+    Warning (13410): Pin "SRAM_ADDR[6]" is stuck at GND
+    Warning (13410): Pin "SRAM_ADDR[7]" is stuck at GND
+    Warning (13410): Pin "SRAM_ADDR[8]" is stuck at GND
+    Warning (13410): Pin "SRAM_ADDR[9]" is stuck at GND
+    Warning (13410): Pin "SRAM_ADDR[10]" is stuck at GND
+    Warning (13410): Pin "SRAM_ADDR[11]" is stuck at GND
+    Warning (13410): Pin "SRAM_ADDR[12]" is stuck at GND
+    Warning (13410): Pin "SRAM_ADDR[13]" is stuck at GND
+    Warning (13410): Pin "SRAM_ADDR[14]" is stuck at GND
+    Warning (13410): Pin "SRAM_ADDR[15]" is stuck at GND
+    Warning (13410): Pin "SRAM_ADDR[16]" is stuck at GND
+    Warning (13410): Pin "SRAM_ADDR[17]" is stuck at GND
+    Warning (13410): Pin "SRAM_ADDR[18]" is stuck at GND
+    Warning (13410): Pin "SRAM_ADDR[19]" is stuck at GND
+    Warning (13410): Pin "SRAM_CE_N" is stuck at GND
+    Warning (13410): Pin "SRAM_LB_N" is stuck at GND
+    Warning (13410): Pin "SRAM_OE_N" is stuck at GND
+    Warning (13410): Pin "SRAM_UB_N" is stuck at GND
+    Warning (13410): Pin "SRAM_WE_N" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[0]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[1]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[2]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[3]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[4]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[5]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[6]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[7]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[8]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[9]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[10]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[11]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[12]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[13]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[14]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[15]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[16]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[17]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[18]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[19]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[20]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[21]" is stuck at GND
+    Warning (13410): Pin "FL_ADDR[22]" is stuck at GND
+    Warning (13410): Pin "FL_CE_N" is stuck at GND
+    Warning (13410): Pin "FL_OE_N" is stuck at GND
+    Warning (13410): Pin "FL_RST_N" is stuck at GND
+    Warning (13410): Pin "FL_WE_N" is stuck at GND
+    Warning (13410): Pin "FL_WP_N" is stuck at GND
+    Warning (13410): Pin "HSMC_CLKOUT_P1" is stuck at GND
+    Warning (13410): Pin "HSMC_CLKOUT_P2" is stuck at GND
+    Warning (13410): Pin "HSMC_CLKOUT0" is stuck at GND
+    Warning (13410): Pin "HSMC_TX_D_P[0]" is stuck at GND
+    Warning (13410): Pin "HSMC_TX_D_P[1]" is stuck at GND
+    Warning (13410): Pin "HSMC_TX_D_P[2]" is stuck at GND
+    Warning (13410): Pin "HSMC_TX_D_P[3]" is stuck at GND
+    Warning (13410): Pin "HSMC_TX_D_P[4]" is stuck at GND
+    Warning (13410): Pin "HSMC_TX_D_P[5]" is stuck at GND
+    Warning (13410): Pin "HSMC_TX_D_P[6]" is stuck at GND
+    Warning (13410): Pin "HSMC_TX_D_P[7]" is stuck at GND
+    Warning (13410): Pin "HSMC_TX_D_P[8]" is stuck at GND
+    Warning (13410): Pin "HSMC_TX_D_P[9]" is stuck at GND
+    Warning (13410): Pin "HSMC_TX_D_P[10]" is stuck at GND
+    Warning (13410): Pin "HSMC_TX_D_P[11]" is stuck at GND
+    Warning (13410): Pin "HSMC_TX_D_P[12]" is stuck at GND
+    Warning (13410): Pin "HSMC_TX_D_P[13]" is stuck at GND
+    Warning (13410): Pin "HSMC_TX_D_P[14]" is stuck at GND
+    Warning (13410): Pin "HSMC_TX_D_P[15]" is stuck at GND
+    Warning (13410): Pin "HSMC_TX_D_P[16]" is stuck at GND
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 1 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file C:/Users/team06/Desktop/eric/output_files/DE2_115.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 78 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "CLOCK2_50"
+    Warning (15610): No output dependent on input pin "CLOCK3_50"
+    Warning (15610): No output dependent on input pin "ENETCLK_25"
+    Warning (15610): No output dependent on input pin "SMA_CLKIN"
+    Warning (15610): No output dependent on input pin "SW[6]"
+    Warning (15610): No output dependent on input pin "SW[7]"
+    Warning (15610): No output dependent on input pin "SW[8]"
+    Warning (15610): No output dependent on input pin "SW[9]"
+    Warning (15610): No output dependent on input pin "SW[10]"
+    Warning (15610): No output dependent on input pin "SW[11]"
+    Warning (15610): No output dependent on input pin "SW[12]"
+    Warning (15610): No output dependent on input pin "SW[13]"
+    Warning (15610): No output dependent on input pin "SW[14]"
+    Warning (15610): No output dependent on input pin "SW[15]"
+    Warning (15610): No output dependent on input pin "UART_RTS"
+    Warning (15610): No output dependent on input pin "UART_RXD"
+    Warning (15610): No output dependent on input pin "SD_WP_N"
+    Warning (15610): No output dependent on input pin "AUD_ADCDAT"
+    Warning (15610): No output dependent on input pin "ENET0_INT_N"
+    Warning (15610): No output dependent on input pin "ENET0_MDIO"
+    Warning (15610): No output dependent on input pin "ENET0_RX_CLK"
+    Warning (15610): No output dependent on input pin "ENET0_RX_COL"
+    Warning (15610): No output dependent on input pin "ENET0_RX_CRS"
+    Warning (15610): No output dependent on input pin "ENET0_RX_DATA[0]"
+    Warning (15610): No output dependent on input pin "ENET0_RX_DATA[1]"
+    Warning (15610): No output dependent on input pin "ENET0_RX_DATA[2]"
+    Warning (15610): No output dependent on input pin "ENET0_RX_DATA[3]"
+    Warning (15610): No output dependent on input pin "ENET0_RX_DV"
+    Warning (15610): No output dependent on input pin "ENET0_RX_ER"
+    Warning (15610): No output dependent on input pin "ENET0_TX_CLK"
+    Warning (15610): No output dependent on input pin "ENET0_LINK100"
+    Warning (15610): No output dependent on input pin "ENET1_INT_N"
+    Warning (15610): No output dependent on input pin "ENET1_MDIO"
+    Warning (15610): No output dependent on input pin "ENET1_RX_CLK"
+    Warning (15610): No output dependent on input pin "ENET1_RX_COL"
+    Warning (15610): No output dependent on input pin "ENET1_RX_CRS"
+    Warning (15610): No output dependent on input pin "ENET1_RX_DATA[0]"
+    Warning (15610): No output dependent on input pin "ENET1_RX_DATA[1]"
+    Warning (15610): No output dependent on input pin "ENET1_RX_DATA[2]"
+    Warning (15610): No output dependent on input pin "ENET1_RX_DATA[3]"
+    Warning (15610): No output dependent on input pin "ENET1_RX_DV"
+    Warning (15610): No output dependent on input pin "ENET1_RX_ER"
+    Warning (15610): No output dependent on input pin "ENET1_TX_CLK"
+    Warning (15610): No output dependent on input pin "ENET1_LINK100"
+    Warning (15610): No output dependent on input pin "TD_CLK27"
+    Warning (15610): No output dependent on input pin "TD_DATA[0]"
+    Warning (15610): No output dependent on input pin "TD_DATA[1]"
+    Warning (15610): No output dependent on input pin "TD_DATA[2]"
+    Warning (15610): No output dependent on input pin "TD_DATA[3]"
+    Warning (15610): No output dependent on input pin "TD_DATA[4]"
+    Warning (15610): No output dependent on input pin "TD_DATA[5]"
+    Warning (15610): No output dependent on input pin "TD_DATA[6]"
+    Warning (15610): No output dependent on input pin "TD_DATA[7]"
+    Warning (15610): No output dependent on input pin "TD_HS"
+    Warning (15610): No output dependent on input pin "TD_VS"
+    Warning (15610): No output dependent on input pin "OTG_INT"
+    Warning (15610): No output dependent on input pin "IRDA_RXD"
+    Warning (15610): No output dependent on input pin "FL_RY"
+    Warning (15610): No output dependent on input pin "HSMC_CLKIN_P1"
+    Warning (15610): No output dependent on input pin "HSMC_CLKIN_P2"
+    Warning (15610): No output dependent on input pin "HSMC_CLKIN0"
+    Warning (15610): No output dependent on input pin "HSMC_RX_D_P[0]"
+    Warning (15610): No output dependent on input pin "HSMC_RX_D_P[1]"
+    Warning (15610): No output dependent on input pin "HSMC_RX_D_P[2]"
+    Warning (15610): No output dependent on input pin "HSMC_RX_D_P[3]"
+    Warning (15610): No output dependent on input pin "HSMC_RX_D_P[4]"
+    Warning (15610): No output dependent on input pin "HSMC_RX_D_P[5]"
+    Warning (15610): No output dependent on input pin "HSMC_RX_D_P[6]"
+    Warning (15610): No output dependent on input pin "HSMC_RX_D_P[7]"
+    Warning (15610): No output dependent on input pin "HSMC_RX_D_P[8]"
+    Warning (15610): No output dependent on input pin "HSMC_RX_D_P[9]"
+    Warning (15610): No output dependent on input pin "HSMC_RX_D_P[10]"
+    Warning (15610): No output dependent on input pin "HSMC_RX_D_P[11]"
+    Warning (15610): No output dependent on input pin "HSMC_RX_D_P[12]"
+    Warning (15610): No output dependent on input pin "HSMC_RX_D_P[13]"
+    Warning (15610): No output dependent on input pin "HSMC_RX_D_P[14]"
+    Warning (15610): No output dependent on input pin "HSMC_RX_D_P[15]"
+    Warning (15610): No output dependent on input pin "HSMC_RX_D_P[16]"
+Info (21057): Implemented 11934 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 91 input pins
+    Info (21059): Implemented 248 output pins
+    Info (21060): Implemented 141 bidirectional pins
+    Info (21061): Implemented 11454 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 590 warnings
+    Info: Peak virtual memory: 5091 megabytes
+    Info: Processing ended: Sat Jun 23 23:03:47 2018
+    Info: Elapsed time: 00:01:34
+    Info: Total CPU time (on all processors): 00:01:43
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/team06/Desktop/eric/output_files/DE2_115.map.smsg.
+
+

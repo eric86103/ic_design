@@ -1,0 +1,12 @@
+
+State Machine - |DE2_115|Top:top|letter:m5|state
+Name state.print 
+state.setting 0 
+state.print 1 
+
+State Machine - |DE2_115|Top:top|controller:m1|current_state_r
+Name current_state_r.IDLE current_state_r.STOP current_state_r.RECORD current_state_r.MODE 
+current_state_r.STOP 0 0 0 0 
+current_state_r.MODE 0 1 0 1 
+current_state_r.RECORD 0 1 1 0 
+current_state_r.IDLE 1 1 0 0 

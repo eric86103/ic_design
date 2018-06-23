@@ -1,0 +1,4 @@
+Warning (10268): Verilog HDL information at Top.v(194): always construct contains both blocking and non-blocking assignments
+Info (10281): Verilog HDL Declaration information at Top.v(2097): object "I" differs only in case from object "i" in the same scope
+Info (10281): Verilog HDL Declaration information at Top.v(2098): object "J" differs only in case from object "j" in the same scope
+Info (10281): Verilog HDL Declaration information at Top.v(2099): object "K" differs only in case from object "k" in the same scope
