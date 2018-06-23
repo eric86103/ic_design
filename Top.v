@@ -42,7 +42,6 @@ module Top(mode, clk, rst, port, shift, latch, gnd, letter, start, set, speed_up
 		.i_record(d_set),
 		.i_speed_up(d_spdup),
 		.i_speed_down(d_spddn),
-		.i_duration(out[7:0]),
 		.i_ready(ready),
 		.o_stop_moder(stop),
 		.o_speed_moder(speed),
@@ -108,7 +107,6 @@ module controller(
 	input				i_record,			// key[1]
    input          i_speed_up,       // key[2]
    input          i_speed_down,     // key[3]
-	input	   [7:0] i_duration,
    input          i_ready,
    output   	   o_stop_moder,
    output	[3:0] o_speed_moder,
@@ -157,7 +155,7 @@ module controller(
 		end
 	end
    always@(*) begin
-     current_state_w   = current_state_r;
+      current_state_w   = current_state_r;
 	  stop_w            = stop_r;
 	  record_pos_w	  	  = record_pos_r;
       case(current_state_r) 
@@ -200,12 +198,12 @@ module controller(
 			play_counter_r 	<= 4'd0;
 			time_duration_r	<= 8'd0;
 			for(i = 0; i < 32; i = i+1)
-				memory_r[i] = 6'd0;
+				memory_r[i] <= 6'd0;
 			for(i = 0; i < 32; i = i+1)
-				duration_r[i] = 6'd0;
+				duration_r[i] <= 6'd0;
       end else begin
 			current_state_r	<= current_state_w;
-         speed_r           <= speed_w;
+         	speed_r           <= speed_w;
 			stop_r 				<= stop_w;
 			record_pos_r		<= record_pos_w;
 			time_duration_r	<= time_duration_w;
